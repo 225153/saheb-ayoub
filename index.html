@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velvet Pearl Boutique — Sharpened Professional Gallery</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Top Announcement Bar -->
+    <div class="announcement-bar">
+        <span>COMPLIMENTARY WORLDWIDE EXPRESS SHIPPING ON ORDERS OVER $300 &bull; THE NATURE EDIT 2026</span>
+    </div>
+
+    <!-- Glassmorphic Header Navigation -->
+    <header class="navbar-glass" id="navbar">
+        <div class="nav-container">
+            <!-- Mobile Menu Toggle -->
+            <button class="nav-icon-btn mobile-only" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Brand Logo -->
+            <a href="#" class="brand-logo">
+                <span class="brand-title">VELVET PEARL</span>
+                <span class="brand-sub">BOUTIQUE</span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="nav-links desktop-only">
+                <a href="#" class="nav-link active">Gallery</a>
+                <a href="#" class="nav-link">Collections</a>
+                <a href="#" class="nav-link">Silk & Satin</a>
+                <a href="#" class="nav-link">Pearl Care</a>
+                <a href="#" class="nav-link">Bespoke</a>
+            </nav>
+
+            <!-- Nav Action Buttons -->
+            <div class="nav-actions">
+                <button class="nav-icon-btn" id="search-toggle-btn" aria-label="Open Search Bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <button class="nav-icon-btn" id="wishlist-btn" aria-label="View Wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="badge" id="wishlist-count">0</span>
+                </button>
+                <button class="nav-icon-btn" id="cart-btn" aria-label="View Shopping Bag">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="badge" id="cart-count">02</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Collapsible Search Bar Header -->
+        <div class="search-overlay-bar" id="search-overlay">
+            <div class="search-input-wrapper">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="live-search-input" placeholder="Search handcrafted pearl jewelry, silk blazers, velvet outerwear..." autocomplete="off">
+                <button class="clear-search-btn" id="clear-search"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+        <div class="mobile-drawer-header">
+            <span class="brand-title">VELVET PEARL</span>
+            <button class="close-btn" id="close-mobile-nav"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="#" class="mobile-link active"><i class="fa-solid fa-gem"></i> Sharpened Gallery</a>
+            <a href="#" class="mobile-link"><i class="fa-solid fa-layer-group"></i> Collections</a>
+            <a href="#" class="mobile-link"><i class="fa-solid fa-shirt"></i> Silk & Satin Edit</a>
+            <a href="#" class="mobile-link"><i class="fa-solid fa-sparkles"></i> Pearl Care & Luster</a>
+            <a href="#" class="mobile-link"><i class="fa-solid fa-wand-magic-sparkles"></i> Bespoke Crafting</a>
+        </div>
+        <div class="mobile-drawer-footer">
+            <p class="label-sm text-muted">Quiet Luxury &bull; Sustainable Luster</p>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="main-wrapper">
+
+        <!-- Hero Section / Gallery Title Header -->
+        <section class="gallery-hero">
+            <div class="hero-content">
+                <div class="tag-pill">
+                    <span class="dot"></span> THE 2026 NATURE EDIT
+                </div>
+                <h1 class="display-lg">Sharpened Professional Gallery</h1>
+                <p class="body-lg text-variant">
+                    An ethereal portrait collection bridging organic pearl brilliance, plush velvet textures, and minimalist silhouette tailoring.
+                </p>
+            </div>
+        </section>
+
+        <!-- Category & Filter Pills Bar -->
+        <section class="filter-section">
+            <div class="filter-pills-scroll" id="filter-pills">
+                <button class="pill-btn active" data-category="all">
+                    <i class="fa-solid fa-border-all"></i> All Pieces
+                </button>
+                <button class="pill-btn" data-category="jewelry">
+                    <i class="fa-solid fa-gem"></i> Pearl Jewelry
+                </button>
+                <button class="pill-btn" data-category="silk">
+                    <i class="fa-solid fa-feather"></i> Silk & Satin
+                </button>
+                <button class="pill-btn" data-category="tailored">
+                    <i class="fa-solid fa-vest-patches"></i> Tailored Blazers
+                </button>
+                <button class="pill-btn" data-category="accessories">
+                    <i class="fa-solid fa-bag-shopping"></i> Accessories
+                </button>
+                <button class="pill-btn" data-category="care">
+                    <i class="fa-solid fa-sparkles"></i> Pearl Care
+                </button>
+            </div>
+        </section>
+
+        <!-- Utility Toolbar (Results count, Grid View Toggle, Sort Options) -->
+        <section class="toolbar-section">
+            <div class="toolbar-left">
+                <span class="label-lg text-muted" id="results-count">Showing 8 Curated Masterpieces</span>
+            </div>
+            <div class="toolbar-right">
+                <!-- Grid View Switcher -->
+                <div class="view-switcher">
+                    <button class="view-btn active" id="view-grid-2" title="Two-Column Grid">
+                        <i class="fa-solid fa-table-cells-large"></i>
+                    </button>
+                    <button class="view-btn" id="view-grid-1" title="Single-Column Focus">
+                        <i class="fa-solid fa-square"></i>
+                    </button>
+                </div>
+
+                <!-- Sort Dropdown -->
+                <div class="custom-dropdown">
+                    <select id="sort-select" aria-label="Sort products by">
+                        <option value="featured">Sort: Featured Edit</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="newest">Newest Arrivals</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery / Product Grid -->
+        <section class="product-grid-container">
+            <div class="product-grid grid-2-col" id="product-grid">
+                <!-- Dynamically populated via script.js -->
+            </div>
+            <!-- Empty Search State -->
+            <div class="empty-state hidden" id="empty-state">
+                <i class="fa-solid fa-magnifying-glass empty-icon"></i>
+                <h3 class="headline-md">No gallery pieces found</h3>
+                <p class="body-md text-muted">Try adjusting your search query or selecting a different category filter.</p>
+                <button class="btn btn-primary" id="reset-filter-btn">Reset All Filters</button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Quick View / Lightbox Modal -->
+    <div class="modal-backdrop hidden" id="quick-view-modal">
+        <div class="glass-modal">
+            <button class="modal-close-btn" id="close-modal-btn" aria-label="Close Modal"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-content-grid">
+                <div class="modal-image-wrapper">
+                    <img src="" id="modal-img" alt="Product View">
+                    <span class="badge badge-sale hidden" id="modal-badge">SALE</span>
+                </div>
+                <div class="modal-info">
+                    <span class="label-sm text-sage" id="modal-category">CATEGORY</span>
+                    <h2 class="headline-lg" id="modal-title">Product Title</h2>
+                    <div class="price-rating-row">
+                        <span class="title-lg text-flour" id="modal-price">$0.00</span>
+                        <div class="rating-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <span class="label-sm text-muted">(4.9)</span>
+                        </div>
+                    </div>
+                    <p class="body-md text-variant" id="modal-desc">
+                        Handcrafted with authentic baroque pearls and organic luster, framed in sustainable velvety tones.
+                    </p>
+
+                    <!-- Color Selector -->
+                    <div class="option-group">
+                        <label class="label-lg">Select Luster / Finish:</label>
+                        <div class="swatch-group">
+                            <button class="swatch-btn active" data-color="Soft Sage" style="background-color: #81876B;"></button>
+                            <button class="swatch-btn" data-color="Suede Cream" style="background-color: #EFEBE6;"></button>
+                            <button class="swatch-btn" data-color="Carbon Black" style="background-color: #282623;"></button>
+                        </div>
+                    </div>
+
+                    <!-- Quantity & Add to Cart CTA -->
+                    <div class="action-row">
+                        <div class="qty-selector">
+                            <button class="qty-btn" id="modal-qty-minus">-</button>
+                            <span class="qty-val" id="modal-qty-val">1</span>
+                            <button class="qty-btn" id="modal-qty-plus">+</button>
+                        </div>
+                        <button class="btn btn-primary flex-1" id="modal-add-to-cart-btn">
+                            <i class="fa-solid fa-bag-shopping"></i> Add to Bag
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sliding Shopping Cart Drawer -->
+    <div class="cart-drawer-overlay hidden" id="cart-drawer-overlay"></div>
+    <aside class="cart-drawer hidden" id="cart-drawer">
+        <div class="cart-drawer-header">
+            <div class="cart-title-group">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <h3 class="headline-md">Your Shopping Bag</h3>
+            </div>
+            <button class="close-btn" id="close-cart-btn" aria-label="Close Shopping Bag"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <div class="cart-drawer-body" id="cart-items-container">
+            <!-- Dynamically populated via script.js -->
+        </div>
+
+        <div class="cart-drawer-footer">
+            <div class="summary-line">
+                <span class="body-md text-muted">Subtotal</span>
+                <span class="title-lg text-flour" id="cart-subtotal">$0.00</span>
+            </div>
+            <p class="label-sm text-muted mb-16">Taxes & express worldwide shipping calculated at checkout.</p>
+            <button class="btn btn-primary btn-block" id="checkout-btn">
+                Proceed to Checkout &bull; <span id="checkout-total">$0.00</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Footer Section -->
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="brand-title">VELVET PEARL</span>
+                <p class="body-md text-muted mt-12">
+                    Ethereal dark shop concept combining nature-inspired baroque pearls with quiet luxury velvet aesthetics.
+                </p>
+                <div class="social-links mt-16">
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4 class="label-lg text-sage mb-12">COLLECTIONS</h4>
+                <a href="#">Tahitian Pearls</a>
+                <a href="#">South Sea Gold</a>
+                <a href="#">Baroque Editions</a>
+                <a href="#">Silk & Velvet Wear</a>
+            </div>
+            <div class="footer-col">
+                <h4 class="label-lg text-sage mb-12">ATELIER</h4>
+                <a href="#">Our Philosophy</a>
+                <a href="#">Pearl Luster Care</a>
+                <a href="#">Custom Commissions</a>
+                <a href="#">Sustainability</a>
+            </div>
+            <div class="footer-col newsletter-col">
+                <h4 class="label-lg text-sage mb-12">NEWSLETTER</h4>
+                <p class="label-sm text-muted mb-12">Subscribe to receive private preview access to new edits.</p>
+                <form class="newsletter-form" id="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn btn-primary btn-sm">Join</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="label-sm text-muted">&copy; 2026 Velvet Pearl Boutique. Designed with Ethereal Dark Shop specification.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript File -->
+    <script src="script.js"></script>
+</body>
+</html>
