@@ -191,7 +191,9 @@ input, select {
 }
 
 .text-variant {
-    color: rgba(231, 225, 221, 0.75);
+    color: var(--color-on-surface-variant);
+    font-weight: 500;
+    letter-spacing: 0.01em;
 }
 
 .text-sage {
@@ -500,8 +502,11 @@ input, select {
 }
 
 .gallery-hero p {
-    max-width: 600px;
+    max-width: 680px;
     margin-top: 12px;
+    line-height: 1.75;
+    font-size: 1.05rem;
+    color: var(--color-on-surface-variant);
 }
 
 /* Category Filter Pills Bar */

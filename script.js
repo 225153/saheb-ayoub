@@ -328,23 +328,26 @@ document
   .getElementById("modal-add-to-cart-btn")
   ?.addEventListener("click", () => {
     if (!state.selectedModalProduct) return;
-    const existing = state.cart.find(
-      (item) => item.id === state.selectedModalProduct.id,
-    );
-    if (existing) {
-      existing.qty += modalQty;
-    } else {
-      state.cart.push({
-        id: state.selectedModalProduct.id,
-        qty: modalQty,
-        finish: "Soft Sage",
-      });
+
+    const product = state.selectedModalProduct;
+    const quantityLabel = modalQty > 1 ? `${modalQty} pieces` : "1 piece";
+    const message = `Hello! I would like to purchase ${product.title} (${quantityLabel}).`;
+    const phone = "21699703535";
+    const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+    const popup = window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    if (!popup) {
+      const fallbackLink = document.createElement("a");
+      fallbackLink.href = whatsappUrl;
+      fallbackLink.target = "_blank";
+      fallbackLink.rel = "noopener noreferrer";
+      document.body.appendChild(fallbackLink);
+      fallbackLink.click();
+      document.body.removeChild(fallbackLink);
     }
-    updateHeaderBadges();
+
     closeQuickView();
-    renderCartDrawer();
-    openCartDrawer();
-    showToast(`Added ${modalQty} piece(s) to bag.`);
+    showToast("Opening WhatsApp with your purchase request.");
     modalQty = 1;
   });
 
