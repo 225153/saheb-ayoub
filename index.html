@@ -3,255 +3,315 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UT - Universal Tech</title>
-    <style>
-        :root {
-            /* Palette matched directly to the Dusty Rose theme & logo */
-            --primary-rose: #C29C96;
-            --rose-dark: #A37B75;
-            --rose-light: #E8D3CF;
-            --bg-color: #2A1F1D;
-            --surface-color: #382A27;
-            --text-main: #F7F1F0;
-            --text-muted: #D1B8B3;
-            --border-color: #523E3A;
-            --accent-pink: #D8A49B;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            transition: all 0.3s ease;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        header {
-            background-color: var(--surface-color);
-            border-bottom: 1px solid var(--border-color);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .brand-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        /* Generated Canvas-based Embedded Logo matched to the original file */
-        .logo-canvas {
-            width: 48px;
-            height: 48px;
-            border-radius: 8px;
-        }
-
-        .brand-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-rose);
-        }
-
-        .lang-switcher {
-            background-color: var(--bg-color);
-            color: var(--primary-rose);
-            border: 1px solid var(--primary-rose);
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .lang-switcher:hover {
-            background-color: var(--primary-rose);
-            color: var(--bg-color);
-        }
-
-        main {
-            flex: 1;
-            max-width: 1200px;
-            width: 100%;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-        }
-
-        .hero {
-            background: linear-gradient(135deg, var(--surface-color) 0%, var(--bg-color) 100%);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 3rem 2rem;
-            text-align: center;
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .hero h1 {
-            color: var(--accent-pink);
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 1.5rem auto;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .card {
-            background-color: var(--surface-color);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1.5rem;
-        }
-
-        .card h3 {
-            color: var(--primary-rose);
-            margin-bottom: 0.75rem;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        footer {
-            background-color: var(--surface-color);
-            border-top: 1px solid var(--border-color);
-            text-align: center;
-            padding: 1.5rem;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-    </style>
+    <title>NOOH Boutique — Sharpened Professional Gallery</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Arabic-capable font (Cairo) + existing fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <header>
-        <div class="brand-container">
-            <canvas id="logoCanvas" class="logo-canvas" width="96" height="96"></canvas>
-            <span class="brand-title">UT Master</span>
+    <!-- Top Announcement Bar -->
+    <div class="announcement-bar">
+        <span>COMPLIMENTARY WORLDWIDE EXPRESS SHIPPING ON ORDERS OVER $300 &bull; THE NATURE EDIT 2026</span>
+    </div>
+
+    <!-- Glassmorphic Header Navigation -->
+    <header class="navbar-glass" id="navbar">
+        <div class="nav-container">
+            <!-- Mobile Menu Toggle -->
+            <button class="nav-icon-btn mobile-only" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Brand Logo -->
+            <a href="#" class="brand-logo">
+                <!-- logo image (place at assets/logo.png) -->
+                <img src="assets/logo.png" alt="NOOH logo" class="brand-logo-img">
+                <span class="brand-sub">BOUTIQUE</span>
+            </a>
+
+            <!-- Language selector -->
+            <div class="lang-switcher">
+                <select id="lang-select" aria-label="Language selector">
+                    <option value="ar">العربية</option>
+                    <option value="en">English</option>
+                    <option value="fr">Français</option>
+                </select>
+            </div>
+
+            <!-- Desktop Nav Links -->
+            <nav class="nav-links desktop-only">
+                <a href="#" class="nav-link active">Gallery</a>
+                <a href="#" class="nav-link">Collections</a>
+                <a href="#" class="nav-link">Silk &amp; Satin</a>
+                <a href="#" class="nav-link">Pearl Care</a>
+                <a href="#" class="nav-link">Bespoke</a>
+            </nav>
+
+            <!-- Nav Action Buttons -->
+            <div class="nav-actions">
+                <button class="nav-icon-btn" id="search-toggle-btn" aria-label="Open Search Bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <button class="nav-icon-btn" id="wishlist-btn" aria-label="View Wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="badge" id="wishlist-count">0</span>
+                </button>
+                <button class="nav-icon-btn" id="cart-btn" aria-label="View Shopping Bag">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="badge" id="cart-count">02</span>
+                </button>
+            </div>
         </div>
-        <button class="lang-switcher" id="langBtn" onclick="toggleLanguage()">English</button>
+
+        <!-- Collapsible Search Bar Header -->
+        <div class="search-overlay-bar" id="search-overlay">
+            <div class="search-input-wrapper">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="live-search-input" placeholder="Search handcrafted pearl jewelry, silk blazers, velvet outerwear..." autocomplete="off">
+                <button class="clear-search-btn" id="clear-search"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+        </div>
     </header>
 
-    <main>
-        <section class="hero">
-            <h1 id="heroTitle">مرحباً بك في المنصة الرسمية</h1>
-            <p id="heroDesc">تم تحديث واجهة المستخدم واعتماد نمط الوردي العتيق (Dusty Rose #C29C96) المتناسق مع هوية الشعار واللغة العربية.</p>
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+    <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+        <div class="mobile-drawer-header">
+            <img src="assets/logo.png" alt="NOOH logo" class="brand-logo-img small">
+            <button class="close-btn" id="close-mobile-nav"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="mobile-nav-links">
+            <a href="#" class="mobile-link active"><i class="fa-solid fa-gem"></i> Sharpened Gallery</a>
+            <a href="#" class="mobile-link"><i class="fa-solid fa-layer-group"></i> Collections</a>
+            <a href="#" class="mobile-link"><i class="fa-solid fa-shirt"></i> Silk &amp; Satin Edit</a>
+            <a href="#" class="mobile-link"><i class="fa-solid fa-sparkles"></i> Pearl Care &amp; Luster</a>
+            <a href="#" class="mobile-link"><i class="fa-solid fa-wand-magic-sparkles"></i> Bespoke Crafting</a>
+        </div>
+        <div class="mobile-drawer-footer">
+            <p class="label-sm text-muted">Quiet Luxury &bull; Sustainable Luster</p>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="main-wrapper">
+
+        <!-- Hero Section / Gallery Title Header -->
+        <section class="gallery-hero">
+            <div class="hero-content">
+                <div class="tag-pill">
+                    <span class="dot"></span> THE 2026 NATURE EDIT
+                </div>
+                <h1 class="display-lg">Sharpened Professional Gallery</h1>
+                <p class="body-lg text-variant">
+                    An ethereal portrait collection bridging organic pearl brilliance, plush velvet textures, and minimalist silhouette tailoring.
+                </p>
+            </div>
         </section>
 
-        <section class="grid">
-            <div class="card">
-                <h3 id="card1Title">التصميم الموحد</h3>
-                <p id="card1Desc">تم تنسيق ألوان الصفحة، الخلفيات، والأزرار لتطابق لون الوردي العتيق والمظهر العام.</p>
-            </div>
-            <div class="card">
-                <h3 id="card2Title">دعم اللغة العربية</h3>
-                <p id="card2Desc">إصلاح مشكلة التبديل وإتاحة الواجهة باللغة العربية كواجهة رئيسية وشاملة.</p>
-            </div>
-            <div class="card">
-                <h3 id="card3Title">إدراج الشعار</h3>
-                <p id="card3Desc">تمت إعادة توليد الشعار بدقة عالية ودمجه مباشرة ليعمل عبر كافة المتصفحات.</p>
+        <!-- Category & Filter Pills Bar -->
+        <section class="filter-section">
+            <div class="filter-pills-scroll" id="filter-pills">
+                <button class="pill-btn active" data-category="all">
+                    <i class="fa-solid fa-border-all"></i> All Pieces
+                </button>
+                <button class="pill-btn" data-category="jewelry">
+                    <i class="fa-solid fa-gem"></i> Pearl Jewelry
+                </button>
+                <button class="pill-btn" data-category="silk">
+                    <i class="fa-solid fa-feather"></i> Silk &amp; Satin
+                </button>
+                <button class="pill-btn" data-category="tailored">
+                    <i class="fa-solid fa-vest-patches"></i> Tailored Blazers
+                </button>
+                <button class="pill-btn" data-category="accessories">
+                    <i class="fa-solid fa-bag-shopping"></i> Accessories
+                </button>
+                <button class="pill-btn" data-category="care">
+                    <i class="fa-solid fa-sparkles"></i> Pearl Care
+                </button>
             </div>
         </section>
+
+        <!-- Utility Toolbar (Results count, Grid View Toggle, Sort Options) -->
+        <section class="toolbar-section">
+            <div class="toolbar-left">
+                <span class="label-lg text-muted" id="results-count">Showing 8 Curated Masterpieces</span>
+            </div>
+            <div class="toolbar-right">
+                <!-- Grid View Switcher -->
+                <div class="view-switcher">
+                    <button class="view-btn active" id="view-grid-2" title="Two-Column Grid">
+                        <i class="fa-solid fa-table-cells-large"></i>
+                    </button>
+                    <button class="view-btn" id="view-grid-1" title="Single-Column Focus">
+                        <i class="fa-solid fa-square"></i>
+                    </button>
+                </div>
+
+                <!-- Sort Dropdown -->
+                <div class="custom-dropdown">
+                    <select id="sort-select" aria-label="Sort products by">
+                        <option value="featured">Sort: Featured Edit</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="newest">Newest Arrivals</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery / Product Grid -->
+        <section class="product-grid-container">
+            <div class="product-grid grid-2-col" id="product-grid">
+                <!-- Dynamically populated via script.js -->
+            </div>
+            <!-- Empty Search State -->
+            <div class="empty-state hidden" id="empty-state">
+                <i class="fa-solid fa-magnifying-glass empty-icon"></i>
+                <h3 class="headline-md">No gallery pieces found</h3>
+                <p class="body-md text-muted">Try adjusting your search query or selecting a different category filter.</p>
+                <button class="btn btn-primary" id="reset-filter-btn">Reset All Filters</button>
+            </div>
+        </section>
+
     </main>
 
-    <footer>
-        <p id="footerText">جميع الحقوق محفوظة © 2026 - UT Master</p>
+    <!-- Quick View / Lightbox Modal -->
+    <div class="modal-backdrop hidden" id="quick-view-modal">
+        <div class="glass-modal">
+            <button class="modal-close-btn" id="close-modal-btn" aria-label="Close Modal"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-content-grid">
+                <div class="modal-image-wrapper">
+                    <img src="" id="modal-img" alt="Product View">
+                    <span class="badge badge-sale hidden" id="modal-badge">SALE</span>
+                </div>
+                <div class="modal-info">
+                    <span class="label-sm text-sage" id="modal-category">CATEGORY</span>
+                    <h2 class="headline-lg" id="modal-title">Product Title</h2>
+                    <div class="price-rating-row">
+                        <span class="title-lg text-flour" id="modal-price">$0.00</span>
+                        <div class="rating-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <span class="label-sm text-muted">(4.9)</span>
+                        </div>
+                    </div>
+                    <p class="body-md text-variant" id="modal-desc">
+                        Handcrafted with authentic baroque pearls and organic luster, framed in sustainable velvety tones.
+                    </p>
+
+                    <!-- Color Selector -->
+                    <div class="option-group">
+                        <label class="label-lg">Select Luster / Finish:</label>
+                        <div class="swatch-group">
+                            <button class="swatch-btn active" data-color="Soft Sage" style="background-color: #81876B;"></button>
+                            <button class="swatch-btn" data-color="Suede Cream" style="background-color: #EFEBE6;"></button>
+                            <button class="swatch-btn" data-color="Carbon Black" style="background-color: #282623;"></button>
+                        </div>
+                    </div>
+
+                    <!-- Quantity & Add to Cart CTA -->
+                    <div class="action-row">
+                        <div class="qty-selector">
+                            <button class="qty-btn" id="modal-qty-minus">-</button>
+                            <span class="qty-val" id="modal-qty-val">1</span>
+                            <button class="qty-btn" id="modal-qty-plus">+</button>
+                        </div>
+                        <button class="btn btn-primary flex-1" id="modal-add-to-cart-btn">
+                            <i class="fa-brands fa-whatsapp"></i> I want to purchase
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sliding Shopping Cart Drawer -->
+    <div class="cart-drawer-overlay hidden" id="cart-drawer-overlay"></div>
+    <aside class="cart-drawer hidden" id="cart-drawer">
+        <div class="cart-drawer-header">
+            <div class="cart-title-group">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <h3 class="headline-md">Your Shopping Bag</h3>
+            </div>
+            <button class="close-btn" id="close-cart-btn" aria-label="Close Shopping Bag"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <div class="cart-drawer-body" id="cart-items-container">
+            <!-- Dynamically populated via script.js -->
+        </div>
+
+        <div class="cart-drawer-footer">
+            <div class="summary-line">
+                <span class="body-md text-muted">Subtotal</span>
+                <span class="title-lg text-flour" id="cart-subtotal">$0.00</span>
+            </div>
+            <p class="label-sm text-muted mb-16">Taxes & express worldwide shipping calculated at checkout.</p>
+            <button class="btn btn-primary btn-block" id="checkout-btn">
+                Proceed to Checkout &bull; <span id="checkout-total">$0.00</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Footer Section -->
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="assets/logo.png" alt="NOOH logo" class="brand-logo-img small">
+                <p class="body-md text-muted mt-12">
+                    Ethereal dark shop concept combining nature-inspired baroque pearls with quiet luxury velvet aesthetics.
+                </p>
+                <div class="social-links mt-16">
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4 class="label-lg text-sage mb-12">COLLECTIONS</h4>
+                <a href="#">Tahitian Pearls</a>
+                <a href="#">South Sea Gold</a>
+                <a href="#">Baroque Editions</a>
+                <a href="#">Silk &amp; Velvet Wear</a>
+            </div>
+            <div class="footer-col">
+                <h4 class="label-lg text-sage mb-12">ATELIER</h4>
+                <a href="#">Our Philosophy</a>
+                <a href="#">Pearl Luster Care</a>
+                <a href="#">Custom Commissions</a>
+                <a href="#">Sustainability</a>
+            </div>
+            <div class="footer-col newsletter-col">
+                <h4 class="label-lg text-sage mb-12">NEWSLETTER</h4>
+                <p class="label-sm text-muted mb-12">Subscribe to receive private preview access to new edits.</p>
+                <form class="newsletter-form" id="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn btn-primary btn-sm">Join</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="label-sm text-muted">&copy; 2026 NOOH Boutique. Designed with Ethereal Dark Shop specification.</p>
+        </div>
     </footer>
 
-    <script>
-        // Render Embedded Logo from original source artwork onto Canvas
-        function drawLogo() {
-            const canvas = document.getElementById('logoCanvas');
-            const ctx = canvas.getContext('2d');
-            
-            // Background
-            ctx.fillStyle = '#C29C96';
-            ctx.fillRect(0, 0, 96, 96);
-            
-            // Inner Graphic / Monogram
-            ctx.fillStyle = '#2A1F1D';
-            ctx.font = 'bold 42px sans-serif';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText('UT', 48, 48);
-
-            // Subtle border ring
-            ctx.strokeStyle = '#E8D3CF';
-            ctx.lineWidth = 4;
-            ctx.strokeRect(4, 4, 88, 88);
-        }
-
-        // Language Dictionary
-        const translations = {
-            ar: {
-                dir: 'rtl',
-                btn: 'English',
-                heroTitle: 'مرحباً بك في المنصة الرسمية',
-                heroDesc: 'تم تحديث واجهة المستخدم واعتماد نمط الوردي العتيق (Dusty Rose #C29C96) المتناسق مع هوية الشعار واللغة العربية.',
-                card1Title: 'التصميم الموحد',
-                card1Desc: 'تم تنسيق ألوان الصفحة، الخلفيات، والأزرار لتطابق لون الوردي العتيق والمظهر العام.',
-                card2Title: 'دعم اللغة العربية',
-                card2Desc: 'إصلاح مشكلة التبديل وإتاحة الواجهة باللغة العربية كواجهة رئيسية وشاملة.',
-                card3Title: 'إدراج الشعار',
-                card3Desc: 'تمت إعادة توليد الشعار بدقة عالية ودمجه مباشرة ليعمل عبر كافة المتصفحات.',
-                footerText: 'جميع الحقوق محفوظة © 2026 - UT Master'
-            },
-            en: {
-                dir: 'ltr',
-                btn: 'العربية',
-                heroTitle: 'Welcome to the Official Platform',
-                heroDesc: 'UI updated with Dusty Rose (#C29C96) theme to fully match the logo identity and Arabic language settings.',
-                card1Title: 'Cohesive Design',
-                card1Desc: 'Page colors, backgrounds, and buttons are unified to fit Dusty Rose aesthetics.',
-                card2Title: 'Arabic Language Fix',
-                card2Desc: 'Fixed the language switcher issue and enabled complete right-to-left Arabic rendering.',
-                card3Title: 'Integrated Logo',
-                card3Desc: 'The logo graphic has been cleanly integrated and dynamically rendered.',
-                footerText: 'All Rights Reserved © 2026 - UT Master'
-            }
-        };
-
-        let currentLang = 'ar';
-
-        function toggleLanguage() {
-            currentLang = currentLang === 'ar' ? 'en' : 'ar';
-            const t = translations[currentLang];
-            
-            document.documentElement.dir = t.dir;
-            document.documentElement.lang = currentLang;
-            
-            document.getElementById('langBtn').innerText = t.btn;
-            document.getElementById('heroTitle').innerText = t.heroTitle;
-            document.getElementById('heroDesc').innerText = t.heroDesc;
-            document.getElementById('card1Title').innerText = t.card1Title;
-            document.getElementById('card1Desc').innerText = t.card1Desc;
-            document.getElementById('card2Title').innerText = t.card2Title;
-            document.getElementById('card2Desc').innerText = t.card2Desc;
-            document.getElementById('card3Title').innerText = t.card3Title;
-            document.getElementById('card3Desc').innerText = t.card3Desc;
-            document.getElementById('footerText').innerText = t.footerText;
-        }
-
-        window.onload = drawLogo;
-    </script>
+    <!-- JavaScript File -->
+    <script src="script.js"></script>
 </body>
 </html>
