@@ -227,12 +227,23 @@ const i18n = {
 };
 
 /* Catalog source — loaded from Supabase (articles added via admin.html) */
-const SUPABASE_URL = "https://uruhajewktcsjtdzzhpu.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_Zt7OSuAuZ0tIU3rkJpaDgg_hLjE6xVd";
+let sb = null;
 
-const sb = window.supabase?.createClient
-  ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-  : null;
+async function initStorefrontSupabase() {
+  if (sb) return sb;
+  try {
+    const response = await fetch("/.netlify/functions/supabase-config");
+    if (!response.ok) throw new Error("Failed to load Supabase config");
+    const { url, anonKey } = await response.json();
+    sb = window.supabase?.createClient
+      ? window.supabase.createClient(url, anonKey)
+      : null;
+  } catch (err) {
+    console.error(err);
+    sb = null;
+  }
+  return sb;
+}
 
 let products = [];
 
@@ -381,6 +392,7 @@ function getFilteredProducts() {
 async function loadProducts() {
   productGrid.innerHTML = `<div class="loading-row"><i class="fa-solid fa-spinner fa-spin"></i> <span>${t("loading_products")}</span></div>`;
 
+  await initStorefrontSupabase();
   if (!sb) {
     products = fallbackProducts;
     renderGrid();
@@ -486,6 +498,13 @@ function updateHeaderBadges() {
 }
 
 /* ── Quick View ── */
+function getProductTitle(product) {
+  if (!product) return "";
+  const localizedTitle = loc(product).title;
+  if (localizedTitle && localizedTitle.trim()) return localizedTitle.trim();
+  return String(product.title || product.name || "").trim();
+}
+
 window.openQuickView = function (id, e) {
   if (e) e.stopPropagation();
   const normalizedId = normalizeProductId(id);
@@ -494,7 +513,7 @@ window.openQuickView = function (id, e) {
   state.selectedModalProduct = p;
   $("modal-img").src = p.image;
   $("modal-category").textContent = catName(p.category);
-  $("modal-title").textContent = loc(p).title;
+  $("modal-title").textContent = getProductTitle(p);
   $("modal-price").textContent = `$${p.price}`;
   $("modal-desc").textContent = loc(p).desc;
   $("modal-qty-val").textContent = modalQty = 1;
@@ -519,9 +538,12 @@ $("modal-qty-plus")?.addEventListener("click", () => {
 $("modal-add-to-cart-btn")?.addEventListener("click", () => {
   const p = state.selectedModalProduct;
   if (!p) return;
-  const message = t("wa_msg")
-    .replace("{title}", loc(p).title)
+  const title = getProductTitle(p);
+  const price = `$${p.price}`;
+  const baseMessage = t("wa_msg")
+    .replace("{title}", title)
     .replace("{q}", modalQty);
+  const message = `${baseMessage}\nPrice: ${price}`;
   const url = `https://wa.me/21699703535?text=${encodeURIComponent(message)}`;
   const popup = window.open(url, "_blank", "noopener,noreferrer");
   if (!popup) {

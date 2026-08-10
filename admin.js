@@ -5,12 +5,18 @@
    Expected storage bucket: 'article-images'
    ========================================================================== */
 
-const SUPABASE_URL = "https://uruhajewktcsjtdzzhpu.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_Zt7OSuAuZ0tIU3rkJpaDgg_hLjE6xVd";
-
-const adminSupabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+let adminSupabase = null;
 const IMAGE_BUCKET = "article-images";
 const ARTICLES_TABLE = "articles";
+
+async function initSupabaseClient() {
+  if (adminSupabase) return adminSupabase;
+  const response = await fetch("/.netlify/functions/supabase-config");
+  if (!response.ok) throw new Error("Failed to load Supabase config");
+  const { url, anonKey } = await response.json();
+  adminSupabase = window.supabase.createClient(url, anonKey);
+  return adminSupabase;
+}
 
 const $ = (id) => document.getElementById(id);
 
@@ -57,6 +63,7 @@ function setSubmitBtn(btn, loading, idleHtml) {
 
 /* ── Session / UI state ── */
 async function checkSession() {
+  await initSupabaseClient();
   const {
     data: { session },
   } = await adminSupabase.auth.getSession();
@@ -104,6 +111,7 @@ loginForm.addEventListener("submit", async (e) => {
 });
 
 logoutBtn.addEventListener("click", async () => {
+  await initSupabaseClient();
   await adminSupabase.auth.signOut();
   loginForm.reset();
   loginError.textContent = "";
@@ -113,6 +121,7 @@ logoutBtn.addEventListener("click", async () => {
 
 /* ── Image upload ── */
 async function uploadImage(file) {
+  await initSupabaseClient();
   const ext = file.name.split(".").pop().toLowerCase();
   const path = `${Date.now()}-${Math.random().toString(36).slice(2, 10)}.${ext}`;
   const { error } = await adminSupabase.storage
@@ -148,6 +157,7 @@ addForm.addEventListener("submit", async (e) => {
     '<i class="fa-solid fa-plus"></i> <span>إضافة القطعة</span>',
   );
   try {
+    await initSupabaseClient();
     const imageUrl = await uploadImage(file);
     const { data, error } = await adminSupabase
       .from(ARTICLES_TABLE)
@@ -181,6 +191,7 @@ addForm.addEventListener("submit", async (e) => {
 
 /* ── Read ── */
 async function loadArticles() {
+  await initSupabaseClient();
   inventoryList.innerHTML =
     '<div class="admin-loading"><i class="fa-solid fa-spinner fa-spin"></i> <span>جارٍ تحميل المخزون…</span></div>';
   const { data, error } = await adminSupabase
@@ -235,6 +246,7 @@ function renderInventory() {
 
 /* ── Update ── */
 async function saveArticle(card) {
+  await initSupabaseClient();
   const id = card.dataset.id;
   const price = parseFloat(card.querySelector('[data-field="price"]').value);
   const stock = parseInt(card.querySelector('[data-field="stock"]').value, 10);
@@ -263,11 +275,15 @@ async function saveArticle(card) {
 
 /* ── Delete ── */
 async function deleteArticle(id, card) {
+  await initSupabaseClient();
   const ok = confirm(
     "هل أنت متأكد من حذف هذه القطعة؟\nلا يمكن التراجع عن هذه العملية.",
   );
   if (!ok) return;
-  const { error } = await adminSupabase.from(ARTICLES_TABLE).delete().eq("id", id);
+  const { error } = await adminSupabase
+    .from(ARTICLES_TABLE)
+    .delete()
+    .eq("id", id);
   if (error) {
     showToast("تعذّر الحذف: " + error.message, true);
     return;
