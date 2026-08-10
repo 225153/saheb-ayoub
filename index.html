@@ -1,317 +1,221 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOOH Boutique — Sharpened Professional Gallery</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Arabic-capable font (Cairo) + existing fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- CSS Stylesheet -->
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NOOH Boutique — نوح | The Nature Edit 2026</title>
+<meta name="description" content="NOOH Boutique — Quiet luxury baroque pearls, silk & velvet. بوتيك نوح — فخامة هادئة ولؤلؤ باروك." />
+<!-- Favicon = the calligraphy mark (save the 2nd generated logo as assets/nooh-mark.png) -->
+<link rel="icon" type="image/png" href="assets/nooh-mark.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Hanken+Grotesk:wght@300;400;500;600;700&family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-    <!-- Top Announcement Bar -->
-    <div class="announcement-bar">
-        <span>COMPLIMENTARY WORLDWIDE EXPRESS SHIPPING ON ORDERS OVER $300 &bull; THE NATURE EDIT 2026</span>
+<!-- ══ Announcement Bar ══ -->
+<div class="announcement-bar" data-i18n="announcement">شحن سريع مجاني حول العالم للطلبات فوق 300$ • إصدار الطبيعة 2026</div>
+
+<!-- ══ Header ══ -->
+<header class="navbar-glass">
+  <div class="nav-container">
+    <button id="mobile-menu-toggle" class="nav-icon-btn mobile-only" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+
+    <nav class="nav-links desktop-only">
+      <a href="#" class="nav-link active" data-i18n="nav_gallery">المعرض</a>
+      <a href="#" class="nav-link" data-i18n="nav_collections">المجموعات</a>
+      <a href="#" class="nav-link" data-i18n="nav_silk">حرير وساتان</a>
+    </nav>
+
+    <!-- BRAND LOGO (save the 1st generated logo as assets/logo-nooh.png) -->
+    <a href="#" class="brand-logo">
+      <img src="assets/logo-nooh.png" alt="NOOH — نوح" class="brand-logo-img" />
+      <span class="brand-sub" data-i18n="brand_sub">بوتيك</span>
+    </a>
+
+    <div class="nav-actions">
+      <div class="lang-switcher" id="lang-switcher" role="group" aria-label="Language">
+        <button class="lang-btn active" data-lang="ar">العربية</button>
+        <button class="lang-btn" data-lang="en">English</button>
+        <button class="lang-btn" data-lang="fr">Français</button>
+      </div>
+      <a href="#" class="nav-link desktop-only" data-i18n="nav_pearlcare">العناية باللؤلؤ</a>
+      <a href="#" class="nav-link desktop-only" data-i18n="nav_bespoke">حسب الطلب</a>
+      <button id="search-toggle-btn" class="nav-icon-btn" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <button class="nav-icon-btn" aria-label="Wishlist"><i class="fa-regular fa-heart"></i><span class="badge" id="wishlist-count">1</span></button>
+      <button id="cart-btn" class="nav-icon-btn" aria-label="Cart"><i class="fa-solid fa-bag-shopping"></i><span class="badge" id="cart-count">02</span></button>
     </div>
+  </div>
 
-    <!-- Glassmorphic Header Navigation -->
-    <header class="navbar-glass" id="navbar">
-        <div class="nav-container">
-            <!-- Mobile Menu Toggle -->
-            <button class="nav-icon-btn mobile-only" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-
-            <!-- Brand Logo -->
-            <a href="#" class="brand-logo">
-                <!-- logo image (place at assets/logo.png) -->
-                <img src="assets/logo.png" alt="NOOH logo" class="brand-logo-img">
-                <span class="brand-sub">BOUTIQUE</span>
-            </a>
-
-            <!-- Language selector -->
-            <div class="lang-switcher">
-                <select id="lang-select" aria-label="Language selector">
-                    <option value="ar">العربية</option>
-                    <option value="en">English</option>
-                    <option value="fr">Français</option>
-                </select>
-            </div>
-
-            <!-- Desktop Nav Links -->
-            <nav class="nav-links desktop-only">
-                <a href="#" class="nav-link active">Gallery</a>
-                <a href="#" class="nav-link">Collections</a>
-                <a href="#" class="nav-link">Silk &amp; Satin</a>
-                <a href="#" class="nav-link">Pearl Care</a>
-                <a href="#" class="nav-link">Bespoke</a>
-            </nav>
-
-            <!-- Nav Action Buttons -->
-            <div class="nav-actions">
-                <button class="nav-icon-btn" id="search-toggle-btn" aria-label="Open Search Bar">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-                <button class="nav-icon-btn" id="wishlist-btn" aria-label="View Wishlist">
-                    <i class="fa-regular fa-heart"></i>
-                    <span class="badge" id="wishlist-count">0</span>
-                </button>
-                <button class="nav-icon-btn" id="cart-btn" aria-label="View Shopping Bag">
-                    <i class="fa-solid fa-bag-shopping"></i>
-                    <span class="badge" id="cart-count">02</span>
-                </button>
-            </div>
-        </div>
-
-        <!-- Collapsible Search Bar Header -->
-        <div class="search-overlay-bar" id="search-overlay">
-            <div class="search-input-wrapper">
-                <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                <input type="text" id="live-search-input" placeholder="Search handcrafted pearl jewelry, silk blazers, velvet outerwear..." autocomplete="off">
-                <button class="clear-search-btn" id="clear-search"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-        </div>
-    </header>
-
-    <!-- Mobile Drawer Navigation -->
-    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
-    <div class="mobile-nav-drawer" id="mobile-nav-drawer">
-        <div class="mobile-drawer-header">
-            <img src="assets/logo.png" alt="NOOH logo" class="brand-logo-img small">
-            <button class="close-btn" id="close-mobile-nav"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-        <div class="mobile-nav-links">
-            <a href="#" class="mobile-link active"><i class="fa-solid fa-gem"></i> Sharpened Gallery</a>
-            <a href="#" class="mobile-link"><i class="fa-solid fa-layer-group"></i> Collections</a>
-            <a href="#" class="mobile-link"><i class="fa-solid fa-shirt"></i> Silk &amp; Satin Edit</a>
-            <a href="#" class="mobile-link"><i class="fa-solid fa-sparkles"></i> Pearl Care &amp; Luster</a>
-            <a href="#" class="mobile-link"><i class="fa-solid fa-wand-magic-sparkles"></i> Bespoke Crafting</a>
-        </div>
-        <div class="mobile-drawer-footer">
-            <p class="label-sm text-muted">Quiet Luxury &bull; Sustainable Luster</p>
-        </div>
+  <div class="search-overlay-bar" id="search-overlay">
+    <div class="search-input-wrapper">
+      <i class="fa-solid fa-magnifying-glass search-icon"></i>
+      <input type="text" id="live-search-input" data-i18n-placeholder="search_placeholder" placeholder="ابحث عن اللؤلؤ، الحرير، البلازرات…" />
+      <button id="clear-search" class="clear-search-btn" aria-label="Clear"><i class="fa-solid fa-xmark"></i></button>
     </div>
+  </div>
+</header>
 
-    <!-- Main Content Container -->
-    <main class="main-wrapper">
+<!-- ══ Mobile Drawer ══ -->
+<div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
+<aside class="mobile-nav-drawer" id="mobile-nav-drawer">
+  <div class="mobile-drawer-header">
+    <img src="assets/logo-nooh.png" alt="NOOH — نوح" class="drawer-logo-img" />
+    <button id="close-mobile-nav" class="nav-icon-btn"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <nav class="mobile-nav-links">
+    <a href="#" class="mobile-link active"><i class="fa-regular fa-images"></i><span data-i18n="nav_gallery">المعرض</span></a>
+    <a href="#" class="mobile-link"><i class="fa-regular fa-gem"></i><span data-i18n="nav_collections">المجموعات</span></a>
+    <a href="#" class="mobile-link"><i class="fa-solid fa-feather"></i><span data-i18n="nav_silk">حرير وساتان</span></a>
+    <a href="#" class="mobile-link"><i class="fa-regular fa-circle-dot"></i><span data-i18n="nav_pearlcare">العناية باللؤلؤ</span></a>
+    <a href="#" class="mobile-link"><i class="fa-regular fa-pen-ruler"></i><span data-i18n="nav_bespoke">حسب الطلب</span></a>
+  </nav>
+</aside>
 
-        <!-- Hero Section / Gallery Title Header -->
-        <section class="gallery-hero">
-            <div class="hero-content">
-                <div class="tag-pill">
-                    <span class="dot"></span> THE 2026 NATURE EDIT
-                </div>
-                <h1 class="display-lg">Sharpened Professional Gallery</h1>
-                <p class="body-lg text-variant">
-                    An ethereal portrait collection bridging organic pearl brilliance, plush velvet textures, and minimalist silhouette tailoring.
-                </p>
-            </div>
-        </section>
+<!-- ══ Main ══ -->
+<main class="main-wrapper">
+  <section class="gallery-hero">
+    <span class="tag-pill"><span class="dot"></span><span data-i18n="hero_tag">إصدار الطبيعة 2026</span></span>
+    <h1 class="display-lg" data-i18n="hero_title">معرض احترافي مصقول</h1>
+    <p class="body-lg" data-i18n="hero_desc">تشكيلة بورتريه حالمة تجمع بين بريق اللؤلؤ العضوي، وخامات المخمل الفاخرة، وقصّات انسيابية بحدٍّ أدنى من التفاصيل.</p>
+  </section>
 
-        <!-- Category & Filter Pills Bar -->
-        <section class="filter-section">
-            <div class="filter-pills-scroll" id="filter-pills">
-                <button class="pill-btn active" data-category="all">
-                    <i class="fa-solid fa-border-all"></i> All Pieces
-                </button>
-                <button class="pill-btn" data-category="jewelry">
-                    <i class="fa-solid fa-gem"></i> Pearl Jewelry
-                </button>
-                <button class="pill-btn" data-category="silk">
-                    <i class="fa-solid fa-feather"></i> Silk &amp; Satin
-                </button>
-                <button class="pill-btn" data-category="tailored">
-                    <i class="fa-solid fa-vest-patches"></i> Tailored Blazers
-                </button>
-                <button class="pill-btn" data-category="accessories">
-                    <i class="fa-solid fa-bag-shopping"></i> Accessories
-                </button>
-                <button class="pill-btn" data-category="care">
-                    <i class="fa-solid fa-sparkles"></i> Pearl Care
-                </button>
-            </div>
-        </section>
-
-        <!-- Utility Toolbar (Results count, Grid View Toggle, Sort Options) -->
-        <section class="toolbar-section">
-            <div class="toolbar-left">
-                <span class="label-lg text-muted" id="results-count">Showing 8 Curated Masterpieces</span>
-            </div>
-            <div class="toolbar-right">
-                <!-- Grid View Switcher -->
-                <div class="view-switcher">
-                    <button class="view-btn active" id="view-grid-2" title="Two-Column Grid">
-                        <i class="fa-solid fa-table-cells-large"></i>
-                    </button>
-                    <button class="view-btn" id="view-grid-1" title="Single-Column Focus">
-                        <i class="fa-solid fa-square"></i>
-                    </button>
-                </div>
-
-                <!-- Sort Dropdown -->
-                <div class="custom-dropdown">
-                    <select id="sort-select" aria-label="Sort products by">
-                        <option value="featured">Sort: Featured Edit</option>
-                        <option value="price-low">Price: Low to High</option>
-                        <option value="price-high">Price: High to Low</option>
-                        <option value="newest">Newest Arrivals</option>
-                    </select>
-                </div>
-            </div>
-        </section>
-
-        <!-- Gallery / Product Grid -->
-        <section class="product-grid-container">
-            <div class="product-grid grid-2-col" id="product-grid">
-                <!-- Dynamically populated via script.js -->
-            </div>
-            <!-- Empty Search State -->
-            <div class="empty-state hidden" id="empty-state">
-                <i class="fa-solid fa-magnifying-glass empty-icon"></i>
-                <h3 class="headline-md">No gallery pieces found</h3>
-                <p class="body-md text-muted">Try adjusting your search query or selecting a different category filter.</p>
-                <button class="btn btn-primary" id="reset-filter-btn">Reset All Filters</button>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Quick View / Lightbox Modal -->
-    <div class="modal-backdrop hidden" id="quick-view-modal">
-        <div class="glass-modal">
-            <button class="modal-close-btn" id="close-modal-btn" aria-label="Close Modal"><i class="fa-solid fa-xmark"></i></button>
-            <div class="modal-content-grid">
-                <div class="modal-image-wrapper">
-                    <img src="" id="modal-img" alt="Product View">
-                    <span class="badge badge-sale hidden" id="modal-badge">SALE</span>
-                </div>
-                <div class="modal-info">
-                    <span class="label-sm text-sage" id="modal-category">CATEGORY</span>
-                    <h2 class="headline-lg" id="modal-title">Product Title</h2>
-                    <div class="price-rating-row">
-                        <span class="title-lg text-flour" id="modal-price">$0.00</span>
-                        <div class="rating-stars">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star-half-stroke"></i>
-                            <span class="label-sm text-muted">(4.9)</span>
-                        </div>
-                    </div>
-                    <p class="body-md text-variant" id="modal-desc">
-                        Handcrafted with authentic baroque pearls and organic luster, framed in sustainable velvety tones.
-                    </p>
-
-                    <!-- Color Selector -->
-                    <div class="option-group">
-                        <label class="label-lg">Select Luster / Finish:</label>
-                        <div class="swatch-group">
-                            <button class="swatch-btn active" data-color="Soft Sage" style="background-color: #81876B;"></button>
-                            <button class="swatch-btn" data-color="Suede Cream" style="background-color: #EFEBE6;"></button>
-                            <button class="swatch-btn" data-color="Carbon Black" style="background-color: #282623;"></button>
-                        </div>
-                    </div>
-
-                    <!-- Quantity & Add to Cart CTA -->
-                    <div class="action-row">
-                        <div class="qty-selector">
-                            <button class="qty-btn" id="modal-qty-minus">-</button>
-                            <span class="qty-val" id="modal-qty-val">1</span>
-                            <button class="qty-btn" id="modal-qty-plus">+</button>
-                        </div>
-                        <button class="btn btn-primary flex-1" id="modal-add-to-cart-btn">
-                            <i class="fa-brands fa-whatsapp"></i> I want to purchase
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <section class="filter-section">
+    <div class="filter-pills-scroll" id="filter-pills">
+      <button class="pill-btn active" data-category="all" data-i18n="pill_all">كل القطع</button>
+      <button class="pill-btn" data-category="jewelry" data-i18n="pill_jewelry">مجوهرات اللؤلؤ</button>
+      <button class="pill-btn" data-category="silk" data-i18n="pill_silk">حرير وساتان</button>
+      <button class="pill-btn" data-category="tailored" data-i18n="pill_tailored">بلازرات مفصّلة</button>
+      <button class="pill-btn" data-category="accessories" data-i18n="pill_accessories">إكسسوارات</button>
+      <button class="pill-btn" data-category="care" data-i18n="pill_care">العناية باللؤلؤ</button>
     </div>
+  </section>
 
-    <!-- Sliding Shopping Cart Drawer -->
-    <div class="cart-drawer-overlay hidden" id="cart-drawer-overlay"></div>
-    <aside class="cart-drawer hidden" id="cart-drawer">
-        <div class="cart-drawer-header">
-            <div class="cart-title-group">
-                <i class="fa-solid fa-bag-shopping"></i>
-                <h3 class="headline-md">Your Shopping Bag</h3>
-            </div>
-            <button class="close-btn" id="close-cart-btn" aria-label="Close Shopping Bag"><i class="fa-solid fa-xmark"></i></button>
+  <section class="toolbar-section">
+    <span id="results-count" class="label-lg text-muted"></span>
+    <div class="toolbar-right">
+      <div class="view-switcher">
+        <button id="view-grid-1" class="view-btn" aria-label="Single column"><i class="fa-regular fa-square"></i></button>
+        <button id="view-grid-2" class="view-btn active" aria-label="Grid"><i class="fa-solid fa-table-cells"></i></button>
+      </div>
+      <div class="custom-dropdown">
+        <select id="sort-select" aria-label="Sort">
+          <option value="featured" data-i18n="sort_featured">ترتيب مميز</option>
+          <option value="price-low" data-i18n="sort_price_low">السعر: من الأقل إلى الأعلى</option>
+          <option value="price-high" data-i18n="sort_price_high">السعر: من الأعلى إلى الأقل</option>
+          <option value="newest" data-i18n="sort_newest">أحدث الوصلات</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <section class="product-grid-container">
+    <div id="product-grid" class="product-grid grid-2-col"></div>
+    <div id="empty-state" class="empty-state hidden">
+      <i class="fa-regular fa-gem empty-icon"></i>
+      <h3 class="headline-md" data-i18n="empty_title">لا توجد قطع في المعرض</h3>
+      <p class="body-md text-muted" data-i18n="empty_desc">جرّب تعديل عبارة البحث أو اختيار تصنيف آخر.</p>
+      <button id="reset-filter-btn" class="btn btn-secondary" data-i18n="reset_filters">إعادة تعيين الكل</button>
+    </div>
+  </section>
+</main>
+
+<!-- ══ Quick View Modal ══ -->
+<div id="quick-view-modal" class="modal-backdrop hidden">
+  <div class="glass-modal">
+    <button id="close-modal-btn" class="modal-close-btn"><i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-content-grid">
+      <div class="modal-image-wrapper">
+        <span id="modal-badge" class="badge-sale hidden" data-i18n="sale">تخفيض</span>
+        <img id="modal-img" src="" alt="" />
+      </div>
+      <div class="modal-info">
+        <span id="modal-category" class="card-category"></span>
+        <h2 id="modal-title" class="headline-md"></h2>
+        <div class="price-rating-row">
+          <span id="modal-price" class="title-lg text-rose"></span>
+          <span class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>&nbsp;(4.9)</span>
         </div>
-
-        <div class="cart-drawer-body" id="cart-items-container">
-            <!-- Dynamically populated via script.js -->
+        <p id="modal-desc" class="body-md text-muted"></p>
+        <div class="option-group">
+          <span class="label-lg text-muted" data-i18n="select_finish">اختر اللمعة / اللون</span>
+          <div class="swatch-group">
+            <button class="swatch-btn active" data-finish="sage"  style="background:#C29C96" title="Dusty Rose"></button>
+            <button class="swatch-btn" data-finish="carbon" style="background:#211D1B" title="Carbon"></button>
+            <button class="swatch-btn" data-finish="ivory" style="background:#EFECE8" title="Ivory"></button>
+          </div>
         </div>
-
-        <div class="cart-drawer-footer">
-            <div class="summary-line">
-                <span class="body-md text-muted">Subtotal</span>
-                <span class="title-lg text-flour" id="cart-subtotal">$0.00</span>
-            </div>
-            <p class="label-sm text-muted mb-16">Taxes & express worldwide shipping calculated at checkout.</p>
-            <button class="btn btn-primary btn-block" id="checkout-btn">
-                Proceed to Checkout &bull; <span id="checkout-total">$0.00</span>
-            </button>
+        <div class="action-row">
+          <div class="qty-selector">
+            <button id="modal-qty-minus" class="qty-btn">−</button>
+            <span id="modal-qty-val" class="qty-val">1</span>
+            <button id="modal-qty-plus" class="qty-btn">+</button>
+          </div>
+          <button id="modal-add-to-cart-btn" class="btn btn-primary flex-1">
+            <i class="fa-brands fa-whatsapp"></i> <span data-i18n="want_purchase">أرغب بالشراء</span>
+          </button>
         </div>
-    </aside>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <!-- Toast Notifications -->
-    <div class="toast-container" id="toast-container"></div>
+<!-- ══ Cart Drawer ══ -->
+<div id="cart-drawer-overlay" class="cart-drawer-overlay hidden"></div>
+<aside id="cart-drawer" class="cart-drawer">
+  <div class="cart-drawer-header">
+    <div class="cart-title-group"><i class="fa-solid fa-bag-shopping"></i><span class="title-lg" data-i18n="cart_title">حقيبة تسوقك</span></div>
+    <button id="close-cart-btn" class="nav-icon-btn"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div id="cart-items-container" class="cart-drawer-body"></div>
+  <div class="cart-drawer-footer">
+    <div class="summary-line"><span class="body-md text-muted" data-i18n="subtotal">المجموع الفرعي</span><span id="cart-subtotal" class="title-lg text-rose">$0.00</span></div>
+    <p class="label-sm text-muted" data-i18n="checkout_note">تُحتسب الضرائب والشحن السريع حول العالم عند إتمام الطلب.</p>
+    <button class="btn btn-primary btn-block mt-12"><span data-i18n="checkout_btn">إتمام الطلب</span> • <span id="checkout-total">$0.00</span></button>
+  </div>
+</aside>
 
-    <!-- Footer Section -->
-    <footer class="footer-section">
-        <div class="footer-container">
-            <div class="footer-brand">
-                <img src="assets/logo.png" alt="NOOH logo" class="brand-logo-img small">
-                <p class="body-md text-muted mt-12">
-                    Ethereal dark shop concept combining nature-inspired baroque pearls with quiet luxury velvet aesthetics.
-                </p>
-                <div class="social-links mt-16">
-                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest"></i></a>
-                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4 class="label-lg text-sage mb-12">COLLECTIONS</h4>
-                <a href="#">Tahitian Pearls</a>
-                <a href="#">South Sea Gold</a>
-                <a href="#">Baroque Editions</a>
-                <a href="#">Silk &amp; Velvet Wear</a>
-            </div>
-            <div class="footer-col">
-                <h4 class="label-lg text-sage mb-12">ATELIER</h4>
-                <a href="#">Our Philosophy</a>
-                <a href="#">Pearl Luster Care</a>
-                <a href="#">Custom Commissions</a>
-                <a href="#">Sustainability</a>
-            </div>
-            <div class="footer-col newsletter-col">
-                <h4 class="label-lg text-sage mb-12">NEWSLETTER</h4>
-                <p class="label-sm text-muted mb-12">Subscribe to receive private preview access to new edits.</p>
-                <form class="newsletter-form" id="newsletter-form">
-                    <input type="email" placeholder="Enter your email address" required>
-                    <button type="submit" class="btn btn-primary btn-sm">Join</button>
-                </form>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p class="label-sm text-muted">&copy; 2026 NOOH Boutique. Designed with Ethereal Dark Shop specification.</p>
-        </div>
-    </footer>
+<!-- ══ Footer ══ -->
+<footer class="footer-section">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <span class="footer-logo-wrap"><img src="assets/nooh-mark.png" alt="نوح" class="footer-logo-img" /></span>
+      <p class="body-md footer-text" data-i18n="footer_desc">مفهوم متجر أثيري يجمع لآلئ الباروك المستوحاة من الطبيعة مع جماليات المخمل ذات الفخامة الهادئة.</p>
+      <div class="social-links">
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+        <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 class="label-lg footer-head" data-i18n="col_collections">المجموعات</h4>
+      <a href="#" data-i18n="link_tahitian">لآلئ تاهيتي</a>
+      <a href="#" data-i18n="link_southsea">لآلئ البحار الجنوبية الذهبية</a>
+      <a href="#" data-i18n="link_baroque">إصدارات باروك</a>
+      <a href="#" data-i18n="link_silkvelvet">أزياء الحرير والمخمل</a>
+    </div>
+    <div class="footer-col">
+      <h4 class="label-lg footer-head" data-i18n="col_atelier">المشغل</h4>
+      <a href="#" data-i18n="link_philosophy">فلسفتنا</a>
+      <a href="#" data-i18n="link_luster">العناية بلمعة اللؤلؤ</a>
+      <a href="#" data-i18n="link_commissions">طلبات خاصة</a>
+      <a href="#" data-i18n="link_sustainability">الاستدامة</a>
+    </div>
+    <div class="footer-col">
+      <h4 class="label-lg footer-head" data-i18n="col_newsletter">النشرة البريدية</h4>
+      <p class="label-sm footer-text" data-i18n="news_desc">اشترك للحصول على معاينة خاصة للإصدارات الجديدة.</p>
+      <form id="newsletter-form" class="newsletter-form">
+        <input type="email" required placeholder="email@example.com" aria-label="Email" />
+        <button class="btn btn-rose" type="submit" data-i18n="join">انضم</button>
+      </form>
+    </div>
+  </div>
+  <div class="footer-bottom"><span class="label-sm footer-text" data-i18n="footer_bottom">© 2026 بوتيك نوح. صُمّم بمواصفات المتجر الأثيري.</span></div>
+</footer>
 
-    <!-- JavaScript File -->
-    <script src="script.js"></script>
+<div id="toast-container" class="toast-container"></div>
+<script src="script.js"></script>
 </body>
 </html>
