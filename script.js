@@ -544,7 +544,7 @@ $("modal-add-to-cart-btn")?.addEventListener("click", () => {
     .replace("{title}", title)
     .replace("{q}", modalQty);
   const message = `${baseMessage}\nPrice: ${price}`;
-  const url = `https://wa.me/21699703535?text=${encodeURIComponent(message)}`;
+  const url = `https://wa.me/95898333?text=${encodeURIComponent(message)}`;
   const popup = window.open(url, "_blank", "noopener,noreferrer");
   if (!popup) {
     const a = document.createElement("a");
