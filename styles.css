@@ -306,8 +306,8 @@ input, select { font-family: inherit; color: inherit; outline: none; }
 }
 .social-links { display: flex; gap: 12px; justify-content: center; margin-top: 4px; }
 .social-links a {
-  width: 38px;
-  height: 38px;
+  width: 42px;
+  height: 42px;
   border-radius: var(--radius-full);
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
@@ -316,6 +316,9 @@ input, select { font-family: inherit; color: inherit; outline: none; }
   justify-content: center;
   color: #D8D2CC;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+}
+.social-links a i {
+  font-size: 1.15rem;
 }
 .social-links a:hover { background: var(--color-primary); color: var(--color-carbon); transform: translateY(-2px); }
 .footer-col { display: flex; flex-direction: column; gap: 10px; }
