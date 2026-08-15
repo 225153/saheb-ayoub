@@ -329,6 +329,10 @@ const productGrid = $("product-grid"),
 function t(key) {
   return (i18n[state.lang] && i18n[state.lang][key]) || i18n.en[key] || key;
 }
+function formatPrice(value) {
+  const amount = Number(value ?? 0);
+  return `د.ت ${amount.toFixed(2)}`;
+}
 function loc(p) {
   return p.i18n
     ? p.i18n[state.lang] || p.i18n.en
@@ -454,7 +458,7 @@ function renderGrid() {
       <div class="card-details" onclick="openQuickView('${productId}', event)">
         <span class="card-category">${catName(p.category)}</span>
         <h3 class="card-title">${loc(p).title}</h3>
-        <div class="card-price-row"><span class="card-price">$${p.price}</span>${p.oldPrice ? `<span class="card-old-price">$${p.oldPrice}</span>` : ""}</div>
+        <div class="card-price-row"><span class="card-price">${formatPrice(p.price)}</span>${p.oldPrice ? `<span class="card-old-price">${formatPrice(p.oldPrice)}</span>` : ""}</div>
       </div>
     </article>`;
     })
@@ -510,7 +514,7 @@ window.openQuickView = function (id, e) {
   $("modal-img").src = p.image;
   $("modal-category").textContent = catName(p.category);
   $("modal-title").textContent = getProductTitle(p);
-  $("modal-price").textContent = `$${p.price}`;
+  $("modal-price").textContent = formatPrice(p.price);
   $("modal-desc").textContent = loc(p).desc;
   $("modal-qty-val").textContent = modalQty = 1;
   $("modal-badge").classList.toggle("hidden", !p.isSale);
@@ -535,7 +539,7 @@ $("modal-add-to-cart-btn")?.addEventListener("click", () => {
   const p = state.selectedModalProduct;
   if (!p) return;
   const title = getProductTitle(p);
-  const price = `$${p.price}`;
+  const price = formatPrice(p.price);
   const baseMessage = t("wa_msg")
     .replace("{title}", title)
     .replace("{q}", modalQty);
@@ -561,8 +565,8 @@ function renderCartDrawer() {
   if (!cartItemsContainer) return;
   if (state.cart.length === 0) {
     cartItemsContainer.innerHTML = `<div class="empty-state" style="margin:20px 0;"><i class="fa-solid fa-bag-shopping empty-icon"></i><p class="body-md text-muted">${t("cart_empty")}</p></div>`;
-    if (cartSubtotal) cartSubtotal.textContent = "$0.00";
-    if (checkoutTotal) checkoutTotal.textContent = "$0.00";
+    if (cartSubtotal) cartSubtotal.textContent = formatPrice(0);
+    if (checkoutTotal) checkoutTotal.textContent = formatPrice(0);
     return;
   }
   let subtotal = 0;
@@ -577,17 +581,17 @@ function renderCartDrawer() {
       <div class="cart-item-details">
         <span class="cart-item-title">${loc(p).title}</span>
         <span class="label-sm text-sage">${t("finish_" + item.finish)}</span>
-        <span class="cart-item-price">$${p.price} &times; ${item.qty}</span>
+        <span class="cart-item-price">${formatPrice(p.price)} &times; ${item.qty}</span>
         <div class="cart-item-controls">
-          <span class="body-md text-flour">$${total}</span>
+          <span class="body-md text-flour">${formatPrice(total)}</span>
           <button class="remove-item-btn" onclick="removeFromCart('${item.id}')"><i class="fa-solid fa-trash-can"></i> ${t("remove")}</button>
         </div>
       </div>
     </div>`;
     })
     .join("");
-  if (cartSubtotal) cartSubtotal.textContent = `$${subtotal}`;
-  if (checkoutTotal) checkoutTotal.textContent = `$${subtotal}`;
+  if (cartSubtotal) cartSubtotal.textContent = formatPrice(subtotal);
+  if (checkoutTotal) checkoutTotal.textContent = formatPrice(subtotal);
 }
 window.removeFromCart = function (id) {
   state.cart = state.cart.filter((i) => i.id !== id);
