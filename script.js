@@ -320,11 +320,7 @@ const productGrid = $("product-grid"),
   closeModalBtn = $("close-modal-btn"),
   toastContainer = $("toast-container"),
   viewGrid1 = $("view-grid-1"),
-  viewGrid2 = $("view-grid-2"),
-  mobileMenuToggle = $("mobile-menu-toggle"),
-  mobileNavDrawer = $("mobile-nav-drawer"),
-  mobileNavOverlay = $("mobile-nav-overlay"),
-  closeMobileNav = $("close-mobile-nav");
+  viewGrid2 = $("view-grid-2");
 
 function t(key) {
   return (i18n[state.lang] && i18n[state.lang][key]) || i18n.en[key] || key;
@@ -442,17 +438,12 @@ function renderGrid() {
   productGrid.innerHTML = items
     .map((p) => {
       const productId = normalizeProductId(p.id);
-      const wished = state.wishlist.has(productId);
       return `<article class="product-card" data-id="${productId}">
       <div class="card-image-wrapper" onclick="openQuickView('${productId}', event)">
         ${p.isSale ? `<span class="badge-sale">${t("sale")}</span>` : ""}
-        <button class="wishlist-card-btn ${wished ? "active" : ""}" aria-label="Wishlist" onclick="toggleWishlist('${productId}', event)">
-          <i class="${wished ? "fa-solid" : "fa-regular"} fa-heart"></i>
-        </button>
         <img src="${p.image}" alt="${loc(p).title}" loading="lazy" onerror="this.onerror=null;this.src='data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';">
         <div class="quick-add-overlay">
           <button class="btn btn-primary btn-sm flex-1" onclick="openQuickView('${productId}', event)"><i class="fa-solid fa-eye"></i> ${t("quick_view")}</button>
-          <button class="btn btn-rose btn-sm" onclick="quickAddToCart('${productId}', event)" title="Quick Add"><i class="fa-solid fa-plus"></i></button>
         </div>
       </div>
       <div class="card-details" onclick="openQuickView('${productId}', event)">
@@ -465,30 +456,7 @@ function renderGrid() {
     .join("");
 }
 
-/* ── Wishlist / Cart ── */
-window.toggleWishlist = function (id, e) {
-  if (e) e.stopPropagation();
-  const normalizedId = normalizeProductId(id);
-  if (state.wishlist.has(normalizedId)) {
-    state.wishlist.delete(normalizedId);
-    showToast(t("toast_wish_remove"));
-  } else {
-    state.wishlist.add(normalizedId);
-    showToast(t("toast_wish_add"));
-  }
-  updateHeaderBadges();
-  renderGrid();
-};
-window.quickAddToCart = function (id, e) {
-  if (e) e.stopPropagation();
-  const normalizedId = normalizeProductId(id);
-  const ex = state.cart.find((i) => i.id === normalizedId);
-  if (ex) ex.qty += 1;
-  else state.cart.push({ id: normalizedId, qty: 1, finish: "sage" });
-  updateHeaderBadges();
-  renderCartDrawer();
-  showToast(t("toast_added"));
-};
+/* ── Cart header totals ── */
 function updateHeaderBadges() {
   if (wishlistCount) wishlistCount.textContent = state.wishlist.size;
   if (cartCount) {
@@ -675,28 +643,6 @@ function setupEventListeners() {
   closeModalBtn?.addEventListener("click", closeQuickView);
   quickViewModal?.addEventListener("click", (e) => {
     if (e.target === quickViewModal) closeQuickView();
-  });
-  /* Swatches */
-  document.querySelectorAll(".swatch-btn").forEach((s) =>
-    s.addEventListener("click", () => {
-      document
-        .querySelectorAll(".swatch-btn")
-        .forEach((x) => x.classList.remove("active"));
-      s.classList.add("active");
-    }),
-  );
-  /* Mobile nav */
-  mobileMenuToggle?.addEventListener("click", () => {
-    mobileNavDrawer.classList.add("active");
-    mobileNavOverlay.classList.add("active");
-  });
-  closeMobileNav?.addEventListener("click", () => {
-    mobileNavDrawer.classList.remove("active");
-    mobileNavOverlay.classList.remove("active");
-  });
-  mobileNavOverlay?.addEventListener("click", () => {
-    mobileNavDrawer.classList.remove("active");
-    mobileNavOverlay.classList.remove("active");
   });
   $("reset-filter-btn")?.addEventListener("click", () => {
     state.activeCategory = "all";

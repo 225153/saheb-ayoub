@@ -21,8 +21,6 @@
 <!-- ══ Header ══ -->
 <header class="navbar-glass">
   <div class="nav-container">
-    <button id="mobile-menu-toggle" class="nav-icon-btn mobile-only" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
-
     <div class="nav-actions nav-actions-left">
       <div class="lang-switcher" id="lang-switcher" role="group" aria-label="Language">
         <button class="lang-btn active" data-lang="ar">العربية</button>
@@ -47,22 +45,6 @@
     </div>
   </div>
 </header>
-
-<!-- ══ Mobile Drawer ══ -->
-<div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
-<aside class="mobile-nav-drawer" id="mobile-nav-drawer">
-  <div class="mobile-drawer-header">
-    <img src="assets/logo-nooh.png" alt="NOOH — نوح" class="drawer-logo-img" />
-    <button id="close-mobile-nav" class="nav-icon-btn"><i class="fa-solid fa-xmark"></i></button>
-  </div>
-  <nav class="mobile-nav-links">
-    <a href="#" class="mobile-link active"><i class="fa-regular fa-images"></i><span data-i18n="nav_gallery">المعرض</span></a>
-    <a href="#" class="mobile-link"><i class="fa-regular fa-gem"></i><span data-i18n="nav_collections">المجموعات</span></a>
-    <a href="#" class="mobile-link"><i class="fa-solid fa-feather"></i><span data-i18n="nav_silk">حرير وساتان</span></a>
-    <a href="#" class="mobile-link"><i class="fa-regular fa-circle-dot"></i><span data-i18n="nav_pearlcare">العناية باللؤلؤ</span></a>
-    <a href="#" class="mobile-link"><i class="fa-regular fa-pen-ruler"></i><span data-i18n="nav_bespoke">حسب الطلب</span></a>
-  </nav>
-</aside>
 
 <!-- ══ Main ══ -->
 <main class="main-wrapper">
@@ -118,14 +100,6 @@
           <span class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>&nbsp;(4.9)</span>
         </div>
         <p id="modal-desc" class="body-md text-muted"></p>
-        <div class="option-group">
-          <span class="label-lg text-muted" data-i18n="select_finish">اختر اللمعة / اللون</span>
-          <div class="swatch-group">
-            <button class="swatch-btn active" data-finish="sage"  style="background:#C29C96" title="Dusty Rose"></button>
-            <button class="swatch-btn" data-finish="carbon" style="background:#211D1B" title="Carbon"></button>
-            <button class="swatch-btn" data-finish="ivory" style="background:#EFECE8" title="Ivory"></button>
-          </div>
-        </div>
         <div class="action-row">
           <div class="qty-selector">
             <button id="modal-qty-minus" class="qty-btn">−</button>
