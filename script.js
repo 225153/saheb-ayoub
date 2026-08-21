@@ -291,7 +291,7 @@ let state = {
   lang: "ar",
   activeCategory: "all",
   searchQuery: "",
-  sortBy: "featured",
+  sortBy: "newest",
   wishlist: new Set(),
   cart: [],
   selectedModalProduct: null,
@@ -447,7 +447,6 @@ function renderGrid() {
         </div>
       </div>
       <div class="card-details" onclick="openQuickView('${productId}', event)">
-        <span class="card-category">${catName(p.category)}</span>
         <h3 class="card-title">${loc(p).title}</h3>
         <div class="card-price-row"><span class="card-price">${formatPrice(p.price)}</span>${p.oldPrice ? `<span class="card-old-price">${formatPrice(p.oldPrice)}</span>` : ""}</div>
       </div>
@@ -480,7 +479,6 @@ window.openQuickView = function (id, e) {
   if (!p) return;
   state.selectedModalProduct = p;
   $("modal-img").src = p.image;
-  $("modal-category").textContent = catName(p.category);
   $("modal-title").textContent = getProductTitle(p);
   $("modal-price").textContent = formatPrice(p.price);
   $("modal-desc").textContent = loc(p).desc;
